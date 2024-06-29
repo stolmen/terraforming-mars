@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
         console.log('qwer')
         if (gameOptions.initialDraftVariant === false) {
           console.log('asdf')
-          player.dealtProjectCards.push(...projectDeck.drawN(game, 100));
+          player.dealtProjectCards.push(...projectDeck.drawN(game, 10));
         }
         if (gameOptions.preludeExtension) {
           player.dealtPreludeCards.push(...preludeDeck.drawN(game, constants.PRELUDE_CARDS_DEALT_PER_PLAYER));
