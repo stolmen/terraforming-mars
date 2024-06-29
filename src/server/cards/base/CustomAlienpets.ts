@@ -12,14 +12,14 @@ import { Board } from '../../boards/Board';
 import { CardRenderer } from '../render/CardRenderer';
 import { Size } from '../../../common/cards/render/Size';
 import { all } from '../Options';
-
 export class AlienPets extends Card implements IProjectCard {
+
   constructor() {
     super({
       type: CardType.ACTIVE,
       name: CardName.ALIEN_PETS,
       tags: [Tag.SPACE, Tag.ANIMAL],
-      cost: 69,
+      cost: 100,
       resourceType: CardResource.ANIMAL,
       protectedResources: true,
 
@@ -33,7 +33,7 @@ export class AlienPets extends Card implements IProjectCard {
         cardNumber: '999',
         renderData: CardRenderer.builder((b) => {
           b.effect('When any ocean OR city tile is placed, add an animal to this card.', (eb) => {
-            eb.city({ size: Size.SMALL, all }).startEffect.resource(CardResource.ANIMAL);
+            eb.city({ size: Size.SMALL, all }).or().oceans(1, { size: Size.TINY, all }).startEffect.resource(CardResource.ANIMAL);
           }).br;
           b.resource(CardResource.ANIMAL).br;
           b.text('Animals may not be removed from this card', Size.SMALL, true).br;
