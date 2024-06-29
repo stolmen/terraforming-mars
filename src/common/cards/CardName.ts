@@ -15,6 +15,11 @@ export enum CardName {
   CONVERT_PLANTS = 'Convert Plants',
   CONVERT_HEAT = 'Convert Heat',
 
+  // ed's custom cards
+  OVERGROWTH = 'Overgrowth',
+  ALIEN_PETS = 'Alien Pets',
+
+  // Base project cards
   ACQUIRED_COMPANY = 'Acquired Company',
   ADAPTATION_TECHNOLOGY = 'Adaptation Technology',
   ADAPTED_LICHEN = 'Adapted Lichen',

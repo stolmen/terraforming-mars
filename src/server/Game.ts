@@ -1,80 +1,80 @@
 import * as constants from '../common/constants';
-import {BeginnerCorporation} from './cards/corporation/BeginnerCorporation';
-import {Board} from './boards/Board';
-import {cardsFromJSON} from './createCard';
-import {CardName} from '../common/cards/CardName';
-import {CardType} from '../common/cards/CardType';
-import {ClaimedMilestone, serializeClaimedMilestones, deserializeClaimedMilestones} from './milestones/ClaimedMilestone';
-import {ColonyDealer} from './colonies/ColonyDealer';
-import {IColony} from './colonies/IColony';
-import {Color} from '../common/Color';
-import {ICorporationCard} from './cards/corporation/ICorporationCard';
-import {Database} from './database/Database';
-import {FundedAward, serializeFundedAwards, deserializeFundedAwards} from './awards/FundedAward';
-import {IAward} from './awards/IAward';
-import {IMilestone} from './milestones/IMilestone';
-import {IProjectCard} from './cards/IProjectCard';
-import {Space} from './boards/Space';
-import {Tile} from './Tile';
-import {LogMessageBuilder} from './logs/LogMessageBuilder';
-import {LogHelper} from './LogHelper';
-import {LogMessage} from '../common/logs/LogMessage';
-import {ALL_MILESTONES} from './milestones/Milestones';
-import {ALL_AWARDS} from './awards/Awards';
-import {PartyHooks} from './turmoil/parties/PartyHooks';
-import {Phase} from '../common/Phase';
-import {IPlayer} from './IPlayer';
-import {Player} from './Player';
-import {PlayerId, GameId, SpectatorId, SpaceId} from '../common/Types';
-import {PlayerInput} from './PlayerInput';
-import {CardResource} from '../common/CardResource';
-import {Resource} from '../common/Resource';
-import {AndThen, DeferredAction} from './deferredActions/DeferredAction';
-import {Priority} from './deferredActions/Priority';
-import {DeferredActionsQueue} from './deferredActions/DeferredActionsQueue';
-import {SelectPaymentDeferred} from './deferredActions/SelectPaymentDeferred';
-import {SelectInitialCards} from './inputs/SelectInitialCards';
-import {PlaceOceanTile} from './deferredActions/PlaceOceanTile';
-import {RemoveColonyFromGame} from './deferredActions/RemoveColonyFromGame';
-import {GainResources} from './deferredActions/GainResources';
-import {SerializedGame} from './SerializedGame';
-import {SpaceBonus} from '../common/boards/SpaceBonus';
-import {TileType} from '../common/TileType';
-import {Turmoil} from './turmoil/Turmoil';
-import {RandomMAOptionType} from '../common/ma/RandomMAOptionType';
-import {AresHandler} from './ares/AresHandler';
-import {AresData} from '../common/ares/AresData';
-import {GameSetup} from './GameSetup';
-import {GameCards} from './GameCards';
-import {GlobalParameter} from '../common/GlobalParameter';
-import {AresSetup} from './ares/AresSetup';
-import {MoonData} from './moon/MoonData';
-import {MoonExpansion} from './moon/MoonExpansion';
-import {TurmoilHandler} from './turmoil/TurmoilHandler';
-import {SeededRandom} from '../common/utils/Random';
-import {chooseMilestonesAndAwards} from './ma/MilestoneAwardSelector';
-import {BoardType} from './boards/BoardType';
-import {MultiSet} from 'mnemonist';
-import {GrantVenusAltTrackBonusDeferred} from './venusNext/GrantVenusAltTrackBonusDeferred';
-import {PathfindersExpansion} from './pathfinders/PathfindersExpansion';
-import {PathfindersData} from './pathfinders/PathfindersData';
-import {AddResourcesToCard} from './deferredActions/AddResourcesToCard';
-import {ColonyDeserializer} from './colonies/ColonyDeserializer';
-import {GameLoader} from './database/GameLoader';
-import {DEFAULT_GAME_OPTIONS, GameOptions} from './game/GameOptions';
-import {TheNewSpaceRace} from './cards/pathfinders/TheNewSpaceRace';
-import {CorporationDeck, PreludeDeck, ProjectDeck, CeoDeck} from './cards/Deck';
-import {Logger} from './logs/Logger';
-import {addDays, dayStringToDays} from './database/utils';
-import {ALL_TAGS, Tag} from '../common/cards/Tag';
-import {IGame, Score} from './IGame';
-import {MarsBoard} from './boards/MarsBoard';
-import {UnderworldData} from './underworld/UnderworldData';
-import {UnderworldExpansion} from './underworld/UnderworldExpansion';
-import {SpaceType} from '../common/boards/SpaceType';
-import {SendDelegateToArea} from './deferredActions/SendDelegateToArea';
-import {BuildColony} from './deferredActions/BuildColony';
-import {newInitialDraft, newPreludeDraft, newStandardDraft} from './Draft';
+import { BeginnerCorporation } from './cards/corporation/BeginnerCorporation';
+import { Board } from './boards/Board';
+import { cardsFromJSON } from './createCard';
+import { CardName } from '../common/cards/CardName';
+import { CardType } from '../common/cards/CardType';
+import { ClaimedMilestone, serializeClaimedMilestones, deserializeClaimedMilestones } from './milestones/ClaimedMilestone';
+import { ColonyDealer } from './colonies/ColonyDealer';
+import { IColony } from './colonies/IColony';
+import { Color } from '../common/Color';
+import { ICorporationCard } from './cards/corporation/ICorporationCard';
+import { Database } from './database/Database';
+import { FundedAward, serializeFundedAwards, deserializeFundedAwards } from './awards/FundedAward';
+import { IAward } from './awards/IAward';
+import { IMilestone } from './milestones/IMilestone';
+import { IProjectCard } from './cards/IProjectCard';
+import { Space } from './boards/Space';
+import { Tile } from './Tile';
+import { LogMessageBuilder } from './logs/LogMessageBuilder';
+import { LogHelper } from './LogHelper';
+import { LogMessage } from '../common/logs/LogMessage';
+import { ALL_MILESTONES } from './milestones/Milestones';
+import { ALL_AWARDS } from './awards/Awards';
+import { PartyHooks } from './turmoil/parties/PartyHooks';
+import { Phase } from '../common/Phase';
+import { IPlayer } from './IPlayer';
+import { Player } from './Player';
+import { PlayerId, GameId, SpectatorId, SpaceId } from '../common/Types';
+import { PlayerInput } from './PlayerInput';
+import { CardResource } from '../common/CardResource';
+import { Resource } from '../common/Resource';
+import { AndThen, DeferredAction } from './deferredActions/DeferredAction';
+import { Priority } from './deferredActions/Priority';
+import { DeferredActionsQueue } from './deferredActions/DeferredActionsQueue';
+import { SelectPaymentDeferred } from './deferredActions/SelectPaymentDeferred';
+import { SelectInitialCards } from './inputs/SelectInitialCards';
+import { PlaceOceanTile } from './deferredActions/PlaceOceanTile';
+import { RemoveColonyFromGame } from './deferredActions/RemoveColonyFromGame';
+import { GainResources } from './deferredActions/GainResources';
+import { SerializedGame } from './SerializedGame';
+import { SpaceBonus } from '../common/boards/SpaceBonus';
+import { TileType } from '../common/TileType';
+import { Turmoil } from './turmoil/Turmoil';
+import { RandomMAOptionType } from '../common/ma/RandomMAOptionType';
+import { AresHandler } from './ares/AresHandler';
+import { AresData } from '../common/ares/AresData';
+import { GameSetup } from './GameSetup';
+import { GameCards } from './GameCards';
+import { GlobalParameter } from '../common/GlobalParameter';
+import { AresSetup } from './ares/AresSetup';
+import { MoonData } from './moon/MoonData';
+import { MoonExpansion } from './moon/MoonExpansion';
+import { TurmoilHandler } from './turmoil/TurmoilHandler';
+import { SeededRandom } from '../common/utils/Random';
+import { chooseMilestonesAndAwards } from './ma/MilestoneAwardSelector';
+import { BoardType } from './boards/BoardType';
+import { MultiSet } from 'mnemonist';
+import { GrantVenusAltTrackBonusDeferred } from './venusNext/GrantVenusAltTrackBonusDeferred';
+import { PathfindersExpansion } from './pathfinders/PathfindersExpansion';
+import { PathfindersData } from './pathfinders/PathfindersData';
+import { AddResourcesToCard } from './deferredActions/AddResourcesToCard';
+import { ColonyDeserializer } from './colonies/ColonyDeserializer';
+import { GameLoader } from './database/GameLoader';
+import { DEFAULT_GAME_OPTIONS, GameOptions } from './game/GameOptions';
+import { TheNewSpaceRace } from './cards/pathfinders/TheNewSpaceRace';
+import { CorporationDeck, PreludeDeck, ProjectDeck, CeoDeck } from './cards/Deck';
+import { Logger } from './logs/Logger';
+import { addDays, dayStringToDays } from './database/utils';
+import { ALL_TAGS, Tag } from '../common/cards/Tag';
+import { IGame, Score } from './IGame';
+import { MarsBoard } from './boards/MarsBoard';
+import { UnderworldData } from './underworld/UnderworldData';
+import { UnderworldExpansion } from './underworld/UnderworldExpansion';
+import { SpaceType } from '../common/boards/SpaceType';
+import { SendDelegateToArea } from './deferredActions/SendDelegateToArea';
+import { BuildColony } from './deferredActions/BuildColony';
+import { newInitialDraft, newPreludeDraft, newStandardDraft } from './Draft';
 
 export class Game implements IGame, Logger {
   public readonly id: GameId;
@@ -171,7 +171,7 @@ export class Game implements IGame, Logger {
     preludeDeck: PreludeDeck,
     ceoDeck: CeoDeck) {
     this.id = id;
-    this.gameOptions = {...gameOptions};
+    this.gameOptions = { ...gameOptions };
     this.players = players;
     const playerIds = players.map((p) => p.id);
     if (playerIds.includes(first.id) === false) {
@@ -217,7 +217,7 @@ export class Game implements IGame, Logger {
     options: Partial<GameOptions> = {},
     seed = 0,
     spectatorId: SpectatorId | undefined = undefined): Game {
-    const gameOptions = {...DEFAULT_GAME_OPTIONS, ...options};
+    const gameOptions = { ...DEFAULT_GAME_OPTIONS, ...options };
     if (gameOptions.clonedGamedId !== undefined) {
       throw new Error('Cloning should not come through this execution path.');
     }
@@ -335,8 +335,10 @@ export class Game implements IGame, Logger {
         gameOptions.underworldExpansion ||
         gameOptions.moonExpansion) {
         player.dealtCorporationCards.push(...corporationDeck.drawN(game, gameOptions.startingCorporations));
+        console.log('qwer')
         if (gameOptions.initialDraftVariant === false) {
-          player.dealtProjectCards.push(...projectDeck.drawN(game, 10));
+          console.log('asdf')
+          player.dealtProjectCards.push(...projectDeck.drawN(game, 100));
         }
         if (gameOptions.preludeExtension) {
           player.dealtPreludeCards.push(...preludeDeck.drawN(game, constants.PRELUDE_CARDS_DEALT_PER_PLAYER));
@@ -355,7 +357,7 @@ export class Game implements IGame, Logger {
     }
 
     players.forEach((player) => {
-      game.log('Good luck ${0}!', (b) => b.player(player), {reservedFor: player});
+      game.log('Good luck ${0}!', (b) => b.player(player), { reservedFor: player });
     });
 
     game.log('Generation ${0}', (b) => b.forNewGeneration().number(game.generation));
@@ -444,7 +446,7 @@ export class Game implements IGame, Logger {
     return result;
   }
 
-  public isSoloMode() :boolean {
+  public isSoloMode(): boolean {
     return this.players.length === 1;
   }
 
@@ -693,7 +695,7 @@ export class Game implements IGame, Logger {
 
     // solar Phase Option
     this.phase = Phase.SOLAR;
-    if (this.gameOptions.solarPhaseOption && ! this.marsIsTerraformed()) {
+    if (this.gameOptions.solarPhaseOption && !this.marsIsTerraformed()) {
       this.gotoWorldGovernmentTerraforming();
       return;
     }
@@ -881,7 +883,7 @@ export class Game implements IGame, Logger {
     this.players.forEach((player) => {
       const corporation = player.corporations.map((c) => c.name).join('|');
       const vpb = player.getVictoryPoints();
-      scores.push({corporation: corporation, playerScore: vpb.total});
+      scores.push({ corporation: corporation, playerScore: vpb.total });
     });
 
     Database.getInstance().saveGameResults(this.id, this.players.length, this.generation, this.gameOptions, scores);
@@ -896,8 +898,8 @@ export class Game implements IGame, Logger {
   // Part of final greenery placement.
   public canPlaceGreenery(player: IPlayer): boolean {
     return !this.donePlayers.has(player.id) &&
-            player.plants >= player.plantsNeededForGreenery &&
-            this.board.getAvailableSpacesForGreenery(player).length > 0;
+      player.plants >= player.plantsNeededForGreenery &&
+      this.board.getAvailableSpacesForGreenery(player).length > 0;
   }
 
   // Called when a player cannot or chose not to place any more greeneries.
@@ -1052,11 +1054,11 @@ export class Game implements IGame, Logger {
       // BONUS FOR HEAT PRODUCTION AT -20 and -24
       if (this.temperature < constants.TEMPERATURE_BONUS_FOR_HEAT_1 &&
         this.temperature + steps * 2 >= constants.TEMPERATURE_BONUS_FOR_HEAT_1) {
-        player.production.add(Resource.HEAT, 1, {log: true});
+        player.production.add(Resource.HEAT, 1, { log: true });
       }
       if (this.temperature < constants.TEMPERATURE_BONUS_FOR_HEAT_2 &&
         this.temperature + steps * 2 >= constants.TEMPERATURE_BONUS_FOR_HEAT_2) {
-        player.production.add(Resource.HEAT, 1, {log: true});
+        player.production.add(Resource.HEAT, 1, { log: true });
       }
 
       player.playedCards.forEach((card) => card.onGlobalParameterIncrease?.(player, GlobalParameter.TEMPERATURE, steps));
@@ -1066,7 +1068,7 @@ export class Game implements IGame, Logger {
 
     // BONUS FOR OCEAN TILE AT 0
     if (this.temperature < constants.TEMPERATURE_FOR_OCEAN_BONUS && this.temperature + steps * 2 >= constants.TEMPERATURE_FOR_OCEAN_BONUS) {
-      this.defer(new PlaceOceanTile(player, {title: 'Select space for ocean from temperature increase'}));
+      this.defer(new PlaceOceanTile(player, { title: 'Select space for ocean from temperature increase' }));
     }
 
     this.temperature += steps * 2;
@@ -1086,7 +1088,7 @@ export class Game implements IGame, Logger {
     return this.generation;
   }
 
-  public getPassedPlayers():Array<Color> {
+  public getPassedPlayers(): Array<Color> {
     const passedPlayersColors: Array<Color> = [];
     this.passedPlayers.forEach((player) => {
       passedPlayersColors.push(this.getPlayerById(player).color);
@@ -1185,7 +1187,7 @@ export class Game implements IGame, Logger {
       TurmoilHandler.resolveTilePlacementBonuses(player, space.spaceType);
 
       if (arcadianCommunityBonus) {
-        this.defer(new GainResources(player, Resource.MEGACREDITS, {count: 3}));
+        this.defer(new GainResources(player, Resource.MEGACREDITS, { count: 3 }));
       }
     }
   }
@@ -1211,70 +1213,70 @@ export class Game implements IGame, Logger {
 
   public grantSpaceBonus(player: IPlayer, spaceBonus: SpaceBonus, count: number = 1) {
     switch (spaceBonus) {
-    case SpaceBonus.DRAW_CARD:
-      player.drawCard(count);
-      break;
-    case SpaceBonus.PLANT:
-      player.stock.add(Resource.PLANTS, count, {log: true});
-      break;
-    case SpaceBonus.STEEL:
-      player.stock.add(Resource.STEEL, count, {log: true});
-      break;
-    case SpaceBonus.TITANIUM:
-      player.stock.add(Resource.TITANIUM, count, {log: true});
-      break;
-    case SpaceBonus.HEAT:
-      player.stock.add(Resource.HEAT, count, {log: true});
-      break;
-    case SpaceBonus.OCEAN:
-      // Hellas special requirements ocean tile
-      if (this.canAddOcean()) {
-        this.defer(new PlaceOceanTile(player, {title: 'Select space for ocean from placement bonus'}));
-        this.defer(new SelectPaymentDeferred(player, constants.HELLAS_BONUS_OCEAN_COST, {title: 'Select how to pay for placement bonus ocean'}));
-      }
-      break;
-    case SpaceBonus.MICROBE:
-      this.defer(new AddResourcesToCard(player, CardResource.MICROBE, {count: count}));
-      break;
-    case SpaceBonus.ANIMAL:
-      this.defer(new AddResourcesToCard(player, CardResource.ANIMAL, {count: count}));
-      break;
-    case SpaceBonus.DATA:
-      this.defer(new AddResourcesToCard(player, CardResource.DATA, {count: count}));
-      break;
-    case SpaceBonus.ENERGY_PRODUCTION:
-      player.production.add(Resource.ENERGY, count, {log: true});
-      break;
-    case SpaceBonus.SCIENCE:
-      this.defer(new AddResourcesToCard(player, CardResource.SCIENCE, {count: count}));
-      break;
-    case SpaceBonus.TEMPERATURE:
-      if (this.getTemperature() < constants.MAX_TEMPERATURE) {
+      case SpaceBonus.DRAW_CARD:
+        player.drawCard(count);
+        break;
+      case SpaceBonus.PLANT:
+        player.stock.add(Resource.PLANTS, count, { log: true });
+        break;
+      case SpaceBonus.STEEL:
+        player.stock.add(Resource.STEEL, count, { log: true });
+        break;
+      case SpaceBonus.TITANIUM:
+        player.stock.add(Resource.TITANIUM, count, { log: true });
+        break;
+      case SpaceBonus.HEAT:
+        player.stock.add(Resource.HEAT, count, { log: true });
+        break;
+      case SpaceBonus.OCEAN:
+        // Hellas special requirements ocean tile
+        if (this.canAddOcean()) {
+          this.defer(new PlaceOceanTile(player, { title: 'Select space for ocean from placement bonus' }));
+          this.defer(new SelectPaymentDeferred(player, constants.HELLAS_BONUS_OCEAN_COST, { title: 'Select how to pay for placement bonus ocean' }));
+        }
+        break;
+      case SpaceBonus.MICROBE:
+        this.defer(new AddResourcesToCard(player, CardResource.MICROBE, { count: count }));
+        break;
+      case SpaceBonus.ANIMAL:
+        this.defer(new AddResourcesToCard(player, CardResource.ANIMAL, { count: count }));
+        break;
+      case SpaceBonus.DATA:
+        this.defer(new AddResourcesToCard(player, CardResource.DATA, { count: count }));
+        break;
+      case SpaceBonus.ENERGY_PRODUCTION:
+        player.production.add(Resource.ENERGY, count, { log: true });
+        break;
+      case SpaceBonus.SCIENCE:
+        this.defer(new AddResourcesToCard(player, CardResource.SCIENCE, { count: count }));
+        break;
+      case SpaceBonus.TEMPERATURE:
+        if (this.getTemperature() < constants.MAX_TEMPERATURE) {
+          this.defer(new SelectPaymentDeferred(
+            player,
+            constants.VASTITAS_BOREALIS_BONUS_TEMPERATURE_COST,
+            { title: 'Select how to pay for placement bonus temperature' }))
+            .andThen(() => this.increaseTemperature(player, 1));
+        }
+        break;
+      case SpaceBonus.ENERGY:
+        player.stock.add(Resource.ENERGY, count, { log: true });
+        break;
+      case SpaceBonus.ASTEROID:
+        this.defer(new AddResourcesToCard(player, CardResource.ASTEROID, { count: count }));
+        break;
+      case SpaceBonus.DELEGATE:
+        Turmoil.ifTurmoil(this, () => this.defer(new SendDelegateToArea(player)));
+        break;
+      case SpaceBonus.COLONY:
         this.defer(new SelectPaymentDeferred(
           player,
           constants.VASTITAS_BOREALIS_BONUS_TEMPERATURE_COST,
-          {title: 'Select how to pay for placement bonus temperature'}))
-          .andThen(() => this.increaseTemperature(player, 1));
-      }
-      break;
-    case SpaceBonus.ENERGY:
-      player.stock.add(Resource.ENERGY, count, {log: true});
-      break;
-    case SpaceBonus.ASTEROID:
-      this.defer(new AddResourcesToCard(player, CardResource.ASTEROID, {count: count}));
-      break;
-    case SpaceBonus.DELEGATE:
-      Turmoil.ifTurmoil(this, () => this.defer(new SendDelegateToArea(player)));
-      break;
-    case SpaceBonus.COLONY:
-      this.defer(new SelectPaymentDeferred(
-        player,
-        constants.VASTITAS_BOREALIS_BONUS_TEMPERATURE_COST,
-        {title: 'Select how to pay for placement bonus temperature'}))
-        .andThen(() => this.defer(new BuildColony(player)));
-      break;
-    default:
-      throw new Error('Unhandled space bonus ' + spaceBonus + '. Report this exact error, please.');
+          { title: 'Select how to pay for placement bonus temperature' }))
+          .andThen(() => this.defer(new BuildColony(player)));
+        break;
+      default:
+        throw new Error('Unhandled space bonus ' + spaceBonus + '. Report this exact error, please.');
     }
   }
 
@@ -1341,7 +1343,7 @@ export class Game implements IGame, Logger {
     for (const p of this.players) {
       if (p.id === this.first.id || insertIdx > 0) {
         ret.splice(insertIdx, 0, p);
-        insertIdx ++;
+        insertIdx++;
       } else {
         ret.push(p);
       }
@@ -1395,7 +1397,7 @@ export class Game implements IGame, Logger {
     return player.cardsInHand.filter((card) => card.type === cardType);
   }
 
-  public log(message: string, f?: (builder: LogMessageBuilder) => void, options?: {reservedFor?: IPlayer}) {
+  public log(message: string, f?: (builder: LogMessageBuilder) => void, options?: { reservedFor?: IPlayer }) {
     const builder = new LogMessageBuilder(message);
     f?.(builder);
     const logMessage = builder.build();
@@ -1410,14 +1412,14 @@ export class Game implements IGame, Logger {
     if (cardCount === 1) {
       const card = this.projectDeck.drawOrThrow(this);
       this.projectDeck.discard(card);
-      this.log('Drew and discarded ${0} to place a ${1}', (b) => b.card(card, {cost: true}).tileType(toPlace));
+      this.log('Drew and discarded ${0} to place a ${1}', (b) => b.card(card, { cost: true }).tileType(toPlace));
       return card.cost;
     } else {
       const card1 = this.projectDeck.drawOrThrow(this);
       this.projectDeck.discard(card1);
       const card2 = this.projectDeck.drawOrThrow(this);
       this.projectDeck.discard(card2);
-      this.log('Drew and discarded ${0} and ${1} to place a ${2}', (b) => b.card(card1, {cost: true}).card(card2, {cost: true}).tileType(toPlace));
+      this.log('Drew and discarded ${0} and ${1} to place a ${2}', (b) => b.card(card1, { cost: true }).card(card2, { cost: true }).tileType(toPlace));
       return card1.cost + card2.cost;
     }
   }
@@ -1436,7 +1438,7 @@ export class Game implements IGame, Logger {
         if (toPlace === TileType.CITY) {
           const adjacentSpaces = this.board.getAdjacentSpaces(space);
           return adjacentSpaces.every((sp) => sp.tile?.tileType !== TileType.CITY) && // no cities nearby
-              adjacentSpaces.some((sp) => this.board.canPlaceTile(sp)); // can place forest nearby
+            adjacentSpaces.some((sp) => this.board.canPlaceTile(sp)); // can place forest nearby
         } else {
           return true;
         }
