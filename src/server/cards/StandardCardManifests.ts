@@ -231,13 +231,15 @@ import { ConvertPlants } from './base/standardActions/ConvertPlants';
 import { ConvertHeat } from './base/standardActions/ConvertHeat';
 import { BufferGasStandardProject } from './prelude/BufferGasStandardProject';
 import { Overgrowth as Overgrowth } from './base/CustomOvergrowth';
-import { AlienPets } from './base/CustomAlienpets';
+import { AmphibiousMartianPets as AmphibiousMartianPets } from './base/CustomAmphibiousMartianPets';
+import { Stanley } from './base/CustomStanley';
 
 export const BASE_CARD_MANIFEST = new ModuleManifest({
   module: 'base',
   projectCards: {
     [CardName.OVERGROWTH]: { Factory: Overgrowth },
-    [CardName.ALIEN_PETS]: { Factory: AlienPets },
+    [CardName.AMPHIBIOUS_MARTIAN_PETS]: { Factory: AmphibiousMartianPets },
+    [CardName.STANLEY]: { Factory: Stanley },
     [CardName.ADAPTATION_TECHNOLOGY]: { Factory: AdaptationTechnology },
     [CardName.ADAPTED_LICHEN]: { Factory: AdaptedLichen },
     [CardName.ADVANCED_ECOSYSTEMS]: { Factory: AdvancedEcosystems },

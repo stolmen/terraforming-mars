@@ -12,18 +12,18 @@ import { Board } from '../../boards/Board';
 import { CardRenderer } from '../render/CardRenderer';
 import { Size } from '../../../common/cards/render/Size';
 import { all } from '../Options';
-export class AlienPets extends Card implements IProjectCard {
+export class AmphibiousMartianPets extends Card implements IProjectCard {
 
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.ALIEN_PETS,
+      name: CardName.AMPHIBIOUS_MARTIAN_PETS,
       tags: [Tag.SPACE, Tag.ANIMAL],
-      cost: 100,
+      cost: 69,
       resourceType: CardResource.ANIMAL,
       protectedResources: true,
 
-      victoryPoints: { resourcesHere: {}, each: 2 },
+      victoryPoints: { resourcesHere: {}, each: 1 },
 
       behavior: {
         addResources: 1,
@@ -37,7 +37,7 @@ export class AlienPets extends Card implements IProjectCard {
           }).br;
           b.resource(CardResource.ANIMAL).br;
           b.text('Animals may not be removed from this card', Size.SMALL, true).br;
-          b.vpText('2 VP per animal here.');
+          b.vpText('1 VP per animal here.');
         }),
         description: { text: 'Add 1 animal to this card.', align: 'left' },
       },

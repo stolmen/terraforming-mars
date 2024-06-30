@@ -17,7 +17,8 @@ export enum CardName {
 
   // ed's custom cards
   OVERGROWTH = 'Overgrowth',
-  ALIEN_PETS = 'Alien Pets',
+  AMPHIBIOUS_MARTIAN_PETS = 'Amphibious Martian Pets',
+  STANLEY = "Stanley",
 
   // Base project cards
   ACQUIRED_COMPANY = 'Acquired Company',
